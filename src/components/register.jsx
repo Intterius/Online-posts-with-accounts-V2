@@ -5,16 +5,14 @@ import LogOutBtn from './common/logOutBtn';
 import RegisterForm from './registerForm';
 import checkLogged from './utils/checkLogged';
 
-
 function Register(props) {
-    return (
-        <div style={{overflow:'hidden'}}>
- {checkLogged() ?  <AlreadyLogged/> :<RegisterForm  />}
-          <LogOutBtn/>
-          <AddPostBtn/>
-
-        </div>
-    );
+  return (
+    <div style={{ overflow: 'hidden' }}>
+      {checkLogged() ? <AlreadyLogged /> : <RegisterForm />}
+      <LogOutBtn />
+      <AddPostBtn />
+    </div>
+  );
 }
 
 export default Register;

@@ -10,7 +10,6 @@ import getAllPosts from './utils/getAllPosts';
 import LoadingPosts from './common/loadingPosts';
 import { toast } from 'react-toastify';
 
-
 import {
   fetchPostsError,
   fetchPostsRequest,
@@ -18,18 +17,25 @@ import {
 } from './redux/actions/actions';
 import { connect } from 'react-redux';
 
-function AllPosts({posts,fetchPostsSuccess,fetchPostsRequest,fetchPostsError,isLoading}) {
-
+function AllPosts({
+  posts,
+  fetchPostsSuccess,
+  fetchPostsRequest,
+  fetchPostsError,
+  isLoading,
+}) {
   useEffect(() => {
-    fetchPostsRequest()
-    getAllPosts().then((result) => {
-      fetchPostsSuccess(result);
-      if (checkLogged()) {
-        if (result.length === 0) {
-          toast.success(`Be our first publisher!`);
+    fetchPostsRequest();
+    getAllPosts()
+      .then((result) => {
+        fetchPostsSuccess(result);
+        if (checkLogged()) {
+          if (result.length === 0) {
+            toast.success(`Be our first publisher!`);
+          }
         }
-      }
-    }).catch(er=>fetchPostsError(er));
+      })
+      .catch((er) => fetchPostsError(er));
   }, []);
 
   return (
@@ -56,11 +62,10 @@ function AllPosts({posts,fetchPostsSuccess,fetchPostsRequest,fetchPostsError,isL
   );
 }
 
-
 const mapStateToProps = (state) => {
   return {
     posts: state.posts.posts,
-    isLoading:state.posts.isLoading
+    isLoading: state.posts.isLoading,
   };
 };
 
@@ -70,4 +75,4 @@ const mapDispatchToProps = {
   fetchPostsSuccess,
 };
 
-export default connect(mapStateToProps,mapDispatchToProps,)(AllPosts);
+export default connect(mapStateToProps, mapDispatchToProps)(AllPosts);

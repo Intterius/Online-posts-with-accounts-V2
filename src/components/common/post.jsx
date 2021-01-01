@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { Card } from 'react-bootstrap';
 import deletePost from '../utils/deletePost';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
 function Post({ id, title, content, user }) {
   const [currentUser, setCurrentUser] = useState();
-   useEffect(() => {
-     const activeUser =  localStorage.getItem('username');
-  if(user === activeUser){
-    setCurrentUser(activeUser)
-  }
-   }, []);
-  const setPostId = (id)=>{
-    localStorage.setItem('postId',id)
-  }
+  useEffect(() => {
+    const activeUser = localStorage.getItem('username');
+    if (user === activeUser) {
+      setCurrentUser(activeUser);
+    }
+  }, []);
+  const setPostId = (id) => {
+    localStorage.setItem('postId', id);
+  };
   return (
     <div
       style={{
@@ -31,14 +31,23 @@ function Post({ id, title, content, user }) {
         </Card.Body>
         <hr style={{ border: '1px solid black' }} />
         <p>Posted by {user}</p>
-       
+
         {currentUser && (
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-            
-            <button className='btn btn-success' onClick={()=>setPostId(id)}>
-             <Link style={{textDecoration:'none',color:'white'}} to={`/edit-post/${id}`}>Edit</Link>
+            <button className='btn btn-success' onClick={() => setPostId(id)}>
+              <Link
+                style={{ textDecoration: 'none', color: 'white' }}
+                to={`/edit-post/${id}`}
+              >
+                Edit
+              </Link>
             </button>
-            <button onClick={() => deletePost(id).then(resp=>window.location.reload())} className='btn btn-danger'>
+            <button
+              onClick={() =>
+                deletePost(id).then((resp) => window.location.reload())
+              }
+              className='btn btn-danger'
+            >
               Delete
             </button>
           </div>

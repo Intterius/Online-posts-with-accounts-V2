@@ -68,27 +68,26 @@ function RegisterForm(props) {
     if (errors) return;
     doSubmit();
   };
-  const validateSubmit =async  (data)=>{
+  const validateSubmit = async (data) => {
     if (data.length === 0) {
       await axios.post('http://localhost:3000/users', {
         username: userInput.username,
         password: userInput.password,
         email: userInput.email,
       });
-      
-      
-      setLocalStorage(userInput.username)
-    
+
+      setLocalStorage(userInput.username);
+
       history.push('/allposts');
     } else {
       toast.error('Such user already exists.');
     }
-  }
+  };
   const doSubmit = async () => {
     const { data } = await axios.get(
       `http://localhost:3000/users?q=${userInput.username}`
     );
-  validateSubmit(data)
+    validateSubmit(data);
   };
   return (
     <div className='form'>

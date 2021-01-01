@@ -1,31 +1,30 @@
 import React, { useState } from 'react';
-import {toast} from 'react-toastify'
-import axios from 'axios'
+import { toast } from 'react-toastify';
+import axios from 'axios';
 function AddPostForm(props) {
-
-  const user = localStorage.getItem('username')
+  const user = localStorage.getItem('username');
   const [userInput, setUserInput] = useState({ title: '', content: '' });
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUserInput({ ...userInput, [name]: value });
   };
-const handlePosting = (user)=>{
-  const timestamp = new Date();
-   axios.post('http://localhost:3000/users-posts', {
-    title: userInput.title,
-    content: userInput.content,
-    user: user,
-    time:timestamp.getTime()
-  });
-
-}
+  const handlePosting = (user) => {
+    const timestamp = new Date();
+    axios.post('http://localhost:3000/users-posts', {
+      title: userInput.title,
+      content: userInput.content,
+      user: user,
+      time: timestamp.getTime(),
+    });
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(!userInput.title || !userInput.content) {return toast.error('Please fill in the inputs.')}
-    else{
-      handlePosting(user)
-    toast.success('Successfully created a new post!')
- e.currentTarget.reset()
+    if (!userInput.title || !userInput.content) {
+      return toast.error('Please fill in the inputs.');
+    } else {
+      handlePosting(user);
+      toast.success('Successfully created a new post!');
+      e.currentTarget.reset();
     }
   };
   return (
