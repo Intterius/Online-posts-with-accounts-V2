@@ -1,0 +1,27 @@
+.links {
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 5px;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  grid-gap: 45px;
+}
+
+.links a {
+  color: white;
+  font-size: 20px;
+  -webkit-transition: 0.3s ease-in;
+  transition: 0.3s ease-in;
+  text-decoration: none;
+}
+
+.links a:hover {
+  color: #33FF33;
+}
+
+.links .active {
+  color: #33FF33;
+}
+/*# sourceMappingURL=navBar.css.map */

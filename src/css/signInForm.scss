@@ -1,0 +1,21 @@
+$bg-color:white;
+$font-color:black;
+
+.form{
+  margin: 0 17%;  
+  margin-top: 4%;
+
+  button{
+      width: 120px;
+  }
+  .sign-form{
+      background-color: $bg-color;
+      color: $font-color;
+    border-radius: 15px;
+    padding: 7px 0;
+  
+   .form-group{
+       padding:0 11%
+   }
+  }
+}

@@ -1,0 +1,9 @@
+body {
+  color: white;
+  background-image: url("https://picsum.photos/1920/1080");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+/*# sourceMappingURL=signIn.css.map */

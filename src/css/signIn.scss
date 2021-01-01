@@ -1,0 +1,12 @@
+$font-color: white;
+
+  body {
+    color: $font-color;
+    //background-image: url('../images//blog-background.jpg');
+    background-image: url('https://picsum.photos/1920/1080');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+  }
+
