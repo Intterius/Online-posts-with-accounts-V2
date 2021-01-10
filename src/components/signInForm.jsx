@@ -62,7 +62,7 @@ function SignInForm(props) {
   };
   const validateSubmit = (data) => {
     if (data.length === 0) {
-      toast.error(`Such user doesn't exists.`);
+      toast.error(`Such user doesn't exist.`);
     } else {
       if (
         data[0].password !== userInput.password ||
@@ -70,11 +70,8 @@ function SignInForm(props) {
       ) {
         toast.error('Wrong email or password.');
       } else {
-        const { username, email } = data[0];
-        axios.post('http://localhost:3000/authorize', {
-          username,
-          email,
-        });
+        const { username} = data[0];
+        
         setLocalStorage(username);
         history.push('/allposts');
       }

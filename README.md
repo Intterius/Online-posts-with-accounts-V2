@@ -5,3 +5,7 @@ The update of this project consists of being entirely created from scratch on Re
 ## Demo Database
 
 In case you want to see this project in action, I suggest downloading and starting my mini json-server from demo-database repository, to run it, write in command line 'npm run json:server', after that you will be able to work with it and try the project itself.
+
+## 10.01.2021
+
+Added React-Redux for code readability and performance reasons, also have cleaned, deleted and improved some code in different files. In case you find a issue or a mistake from my part, please notice me.
