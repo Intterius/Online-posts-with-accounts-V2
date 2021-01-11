@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Card } from 'react-bootstrap';
-import deletePost from '../utils/deletePost';
+import deletePost from '../../utils/deletePost';
 import { Link } from 'react-router-dom';
 function Post({ id, title, content, user }) {
   const [currentUser, setCurrentUser] = useState();

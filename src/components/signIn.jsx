@@ -4,7 +4,7 @@ import '../css/signIn.css';
 import SignInForm from './signInForm';
 import AlreadyLogged from './common/alreadyLogged';
 import LogOutBtn from './common/logOutBtn';
-import checkLogged from './utils/checkLogged';
+import checkLogged from '../utils/checkLogged';
 import AddPostBtn from './common/addPostBtn';
 
 function SignIn(props) {

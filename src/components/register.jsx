@@ -3,7 +3,7 @@ import AddPostBtn from './common/addPostBtn';
 import AlreadyLogged from './common/alreadyLogged';
 import LogOutBtn from './common/logOutBtn';
 import RegisterForm from './registerForm';
-import checkLogged from './utils/checkLogged';
+import checkLogged from '../utils/checkLogged';
 
 function Register(props) {
   return (

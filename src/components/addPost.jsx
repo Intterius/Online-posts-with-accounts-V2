@@ -3,7 +3,7 @@ import NavBar from './navBar';
 import '../css/addPost.css';
 import NotLogged from './common/notLogged';
 import LogOutBtn from './common/logOutBtn';
-import checkLogged from './utils/checkLogged';
+import checkLogged from '../utils/checkLogged';
 import AddPostForm from './addPostForm';
 function AddPost(props) {
   return (

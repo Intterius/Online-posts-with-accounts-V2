@@ -3,12 +3,12 @@ import NavBar from './navBar';
 import '../css/allPosts.css';
 import NotLogged from './common/notLogged';
 import LogOutBtn from './common/logOutBtn';
-import checkLogged from './utils/checkLogged';
+import checkLogged from '../utils/checkLogged';
 import AddPostBtn from './common/addPostBtn';
 import Post from './common/post';
 import LoadingPosts from './common/loadingPosts';
 import { connect } from 'react-redux';
-import { getPosts } from './redux/actions/actions';
+import { getPosts } from '../redux/actions/actions';
 
 function AllPosts({ posts, getPosts }) {
   useEffect(() => {

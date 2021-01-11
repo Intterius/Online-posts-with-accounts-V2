@@ -6,7 +6,7 @@ import '../css/signInForm.css';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import setLocalStorage from './utils/setLocalStorage';
+import setLocalStorage from '../utils/setLocalStorage';
 function SignInForm(props) {
   const [userInput, setUserInput] = useState({
     email: '',

@@ -3,11 +3,11 @@ import NavBar from './navBar';
 import '../css/myPosts.css';
 import NotLogged from './common/notLogged';
 import LogOutBtn from './common/logOutBtn';
-import checkLogged from './utils/checkLogged';
+import checkLogged from '../utils/checkLogged';
 import AddPostBtn from './common/addPostBtn';
 import Post from './common/post';
 import LoadingPosts from './common/loadingPosts';
-import { getMyPosts } from './redux/actions/actions';
+import { getMyPosts } from '../redux/actions/actions';
 import { connect } from 'react-redux';
 
 function MyPosts({ posts, getMyPosts }) {

@@ -6,7 +6,7 @@ import Joi from 'joi-browser';
 import '../css/signInForm.css';
 import { toast } from 'react-toastify';
 import axios from 'axios';
-import setLocalStorage from './utils/setLocalStorage';
+import setLocalStorage from '../utils/setLocalStorage';
 function RegisterForm(props) {
   const [userInput, setUserInput] = useState({
     username: '',

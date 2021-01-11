@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import checkLogged from '../utils/checkLogged';
+import checkLogged from '../../utils/checkLogged';
 
 function AddPostBtn(props) {
   return (
