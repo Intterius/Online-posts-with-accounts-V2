@@ -12,6 +12,7 @@ function EditPostPage() {
   const history = useHistory();
   const user = localStorage.getItem('username');
   const postId = localStorage.getItem('postId');
+
   useEffect(() => {
     if (postId !== paramsId) {
       history.push('/not-found');
@@ -29,10 +30,12 @@ function EditPostPage() {
     );
     return data;
   };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUserInput({ ...userInput, [name]: value });
   };
+
   const handlePosting = async (user) => {
     const timestamp = new Date();
     await axios.patch(`http://localhost:3000/users-posts/${postId}`, {
@@ -42,6 +45,7 @@ function EditPostPage() {
       time: timestamp.getTime(),
     });
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!userInput.title || !userInput.content) {
@@ -55,6 +59,7 @@ function EditPostPage() {
         .catch((err) => console.log(err));
     }
   };
+
   return (
     postContent.title && (
       <div

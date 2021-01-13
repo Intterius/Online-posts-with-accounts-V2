@@ -4,15 +4,18 @@ import deletePost from '../../utils/deletePost';
 import { Link } from 'react-router-dom';
 function Post({ id, title, content, user }) {
   const [currentUser, setCurrentUser] = useState();
+
   useEffect(() => {
     const activeUser = localStorage.getItem('username');
     if (user === activeUser) {
       setCurrentUser(activeUser);
     }
   }, []);
+
   const setPostId = (id) => {
     localStorage.setItem('postId', id);
   };
+
   return (
     <div
       style={{

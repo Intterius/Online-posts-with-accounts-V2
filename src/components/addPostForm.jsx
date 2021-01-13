@@ -4,10 +4,12 @@ import axios from 'axios';
 function AddPostForm(props) {
   const user = localStorage.getItem('username');
   const [userInput, setUserInput] = useState({ title: '', content: '' });
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUserInput({ ...userInput, [name]: value });
   };
+
   const handlePosting = (user) => {
     const timestamp = new Date();
     axios.post('http://localhost:3000/users-posts', {
@@ -17,6 +19,7 @@ function AddPostForm(props) {
       time: timestamp.getTime(),
     });
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!userInput.title || !userInput.content) {
@@ -27,6 +30,7 @@ function AddPostForm(props) {
       e.currentTarget.reset();
     }
   };
+
   return (
     <div
       className='form'

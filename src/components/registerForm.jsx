@@ -13,12 +13,15 @@ function RegisterForm(props) {
     password: '',
     email: '',
   });
+
   const [Errors, setErrors] = useState({
     username: '',
     password: '',
     email: '',
   });
+
   const history = useHistory();
+
   const EntireSchema = {
     username: Joi.string()
       .required()
@@ -36,23 +39,27 @@ function RegisterForm(props) {
       .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } })
       .label('Email'),
   };
+
   const validate = () => {
     const options = { abortEarly: false };
     const { error } = Joi.validate(userInput, EntireSchema, options);
     if (!error) return null;
     const errors = {};
+
     for (let items of error.details) {
       errors[items.path[0]] = items.message;
     }
 
     return errors;
   };
+
   const validateProperty = ({ name, value }) => {
     const obj = { [name]: value };
     const schemaField = { [name]: EntireSchema[name] };
     const { error } = Joi.validate(obj, schemaField);
     return error ? error.details[0].message : null;
   };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUserInput({ ...userInput, [name]: value });
@@ -68,27 +75,33 @@ function RegisterForm(props) {
     if (errors) return;
     doSubmit();
   };
+
   const validateSubmit = async (data) => {
-    if (data.length === 0) {
-      await axios.post('http://localhost:3000/users', {
-        username: userInput.username,
-        password: userInput.password,
-        email: userInput.email,
-      });
-
-      setLocalStorage(userInput.username);
-
-      history.push('/allposts');
-    } else {
-      toast.error('Such user already exists.');
-    }
+    await axios.post('http://localhost:3000/users', {
+      username: userInput.username,
+      password: userInput.password,
+      email: userInput.email,
+    });
+    setLocalStorage(userInput.username);
+    history.push('/allposts');
   };
+
   const doSubmit = async () => {
-    const { data } = await axios.get(
+    const { data: email } = await axios.get(
+      `http://localhost:3000/users?q=${userInput.email}`
+    );
+    const { data: name } = await axios.get(
       `http://localhost:3000/users?q=${userInput.username}`
     );
-    validateSubmit(data);
+    if (!email.length && !name.length) {
+      validateSubmit(email);
+    } else {
+      toast.error(
+        'That username or email is already taken. Please try another one.'
+      );
+    }
   };
+
   return (
     <div className='form'>
       <form className='sign-form' onSubmit={handleSubmit}>

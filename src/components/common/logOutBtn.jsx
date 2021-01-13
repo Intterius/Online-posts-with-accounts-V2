@@ -6,6 +6,7 @@ function LogOutBtn(props) {
   const logOut = () => {
     localStorage.setItem('username', '');
   };
+
   return (
     checkLogged() && (
       <div style={{ position: 'fixed', right: '2%', top: '2%' }}>

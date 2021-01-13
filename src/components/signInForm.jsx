@@ -28,6 +28,7 @@ function SignInForm(props) {
       .max(30),
   };
   const history = useHistory();
+
   const validate = () => {
     const options = { abortEarly: false };
     const { error } = Joi.validate(userInput, EntireSchema, options);
@@ -36,15 +37,16 @@ function SignInForm(props) {
     for (let items of error.details) {
       errors[items.path[0]] = items.message;
     }
-
     return errors;
   };
+
   const validateProperty = ({ name, value }) => {
     const obj = { [name]: value };
     const schemaField = { [name]: EntireSchema[name] };
     const { error } = Joi.validate(obj, schemaField);
     return error ? error.details[0].message : null;
   };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUserInput({ ...userInput, [name]: value });
@@ -60,6 +62,7 @@ function SignInForm(props) {
     if (errors) return;
     doSubmit();
   };
+
   const validateSubmit = (data) => {
     if (data.length === 0) {
       toast.error(`Such user doesn't exist.`);
@@ -70,19 +73,21 @@ function SignInForm(props) {
       ) {
         toast.error('Wrong email or password.');
       } else {
-        const { username} = data[0];
-        
+        const { username } = data[0];
+
         setLocalStorage(username);
         history.push('/allposts');
       }
     }
   };
+
   const doSubmit = async () => {
     const { data } = await axios.get(
       `http://localhost:3000/users?q=${userInput.email}`
     );
     validateSubmit(data);
   };
+
   return (
     <div className='form'>
       <form className='sign-form' onSubmit={handleSubmit}>

@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import NavBar from './navBar';
-import '../css/allPosts.css';
 import NotLogged from './common/notLogged';
 import LogOutBtn from './common/logOutBtn';
 import checkLogged from '../utils/checkLogged';
@@ -9,11 +8,21 @@ import Post from './common/post';
 import LoadingPosts from './common/loadingPosts';
 import { connect } from 'react-redux';
 import { getPosts } from '../redux/actions/actions';
+import { getMyPosts } from '../redux/actions/actions';
+import { useLocation } from 'react-router-dom';
+import '../css/allPosts.css';
 
-function AllPosts({ posts, getPosts }) {
+function AllPosts({ posts, getPosts, getMyPosts }) {
+  const { pathname } = useLocation();
+
   useEffect(() => {
-    getPosts();
-  }, []);
+    if (pathname === '/allposts') {
+      getPosts();
+    } else if (pathname === '/myposts') {
+      getMyPosts();
+    }
+  }, [pathname]);
+
   const validateContent = () => {
     return !checkLogged() ? (
       <NotLogged />
@@ -46,6 +55,4 @@ const mapStateToProps = (state) => ({
   posts: state.data.posts,
 });
 
-
-
-export default connect(mapStateToProps,{getPosts})(AllPosts);
+export default connect(mapStateToProps, { getPosts, getMyPosts })(AllPosts);
